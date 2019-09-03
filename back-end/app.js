@@ -1,6 +1,5 @@
 const express = require('express');
 const path = require('path');
-const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
@@ -24,14 +23,23 @@ app.use(fileUpload());
 app.use('/public', express.static(__dirname + '/public'));
 
 
-app.post('/upload', (req, res, next) => {
-  console.log(req);
+app.post('/upload/voice', (req, res, next) => {
   let File = req.files.file;
-  File.mv(`${__dirname}/public/${req.body.filename}`, function(err) {
+  File.mv(`${__dirname}/public/${req.files.file.name}`, function(err) {
     if (err) {
       return res.status(500).send(err);
     }
-    res.json({file: `public/${req.body.filename}`});
+    res.json({file: `public/${req.files.file.name}`});
+  });
+})
+
+app.post('/upload/backing', (req, res, next) => {
+  let File = req.files.file;
+  File.mv(`${__dirname}/public/${req.files.file.name}`, function(err) {
+    if (err) {
+      return res.status(500).send(err);
+    }
+    res.json({file: `public/${req.files.file.name}`});
   });
 })
 

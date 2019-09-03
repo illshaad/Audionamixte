@@ -1,15 +1,13 @@
 import React from 'react';
 import AudioPlayer from 'react-modular-audio-player';
-import UploadBacking from './UploadBacking';
 
-
-class Upload extends React.Component {
+class UploadBacking extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
         fileURL: '',
         music : [],
-        backing: false
+        instru: false
     };
 }
   Uploadfile = (e) => {
@@ -19,14 +17,14 @@ class Upload extends React.Component {
     data.append('file', this.uploadInput.files[0]);
     
 
-    fetch('http://localhost:8000/upload/voice', {
+    fetch('http://localhost:8000/upload/backing', {
       method: 'POST',
       body: data,
     }).then((response) => {
       response.json()
       .then((body) => {
         this.setState({ 
-          fileURL:  `http://localhost:8000/${body.file}` ,
+          fileURL:`http://localhost:8000/${body.file}` ,
           
         });
       });
@@ -34,14 +32,13 @@ class Upload extends React.Component {
   }
 
   render() {
-        let playList =[
-        {
-          src : this.state.fileURL ,
-          title : 'Song',
-          artist : 'Singer'
-        },
-      ]
-    
+    let playList =[
+      {
+        src : this.state.fileURL ,
+        title : 'Song',
+        artist : 'Singer'
+      },
+    ]
     return (
       <div>
         <div>
@@ -51,15 +48,17 @@ class Upload extends React.Component {
           <button onClick = {this.Uploadfile}>Upload</button>
         </div>
         <div>
-          <AudioPlayer 
+          <div>
+            <div>
+            <AudioPlayer 
               audioFiles={playList}
-          />
-        {this.state.backing && <UploadBacking />}
+            />
+            </div>
+          </div>
         </div>
-        {!this.state.backing && <button onClick={() => this.setState({backing: !this.state.backing})}>+</button>}
       </div>
     );
   }
 }
 
-export default Upload;
+export default UploadBacking;
