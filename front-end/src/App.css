@@ -1,0 +1,36 @@
+.audio-player {
+    background-color: #b7b7b7;
+    padding: 0.5rem;
+    border-radius: 10px;
+    filter: invert(100%);
+  }
+  
+  #play-icon {
+    height: 0.77rem !important;
+  }
+  #loop-icon {
+    height: 0.9rem !important;
+  }
+
+h1{
+     text-align: center;
+}
+
+button{
+
+    height: 22px;
+    margin-top: 20px;
+    box-shadow: 2px 1px 1px black;
+}
+.btn{
+  
+    height: 22px;
+    margin-top: 20px;
+    box-shadow: 2px 1px 1px black;
+}
+
+.input{
+    margin-bottom: 20px;
+    margin-top : 20px
+}
+

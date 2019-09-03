@@ -34,29 +34,30 @@ class Upload extends React.Component {
   }
 
   render() {
-        let playList =[
-        {
-          src : this.state.fileURL ,
-          title : 'Song',
-          artist : 'Singer'
-        },
-      ]
+
+  let playList =[
+  {
+    src : this.state.fileURL ,
+    title : 'Song',
+    artist : 'Singer'
+  },
+]
     
     return (
+      
       <div>
-        <div>
-          <input ref={(ref) => { this.uploadInput = ref; }} type="file" />
-        </div>
-        <div>
+        <div className='input'>
+          <input type="input" ref={(ref) => { this.uploadInput = ref; }} type="file" />
           <button onClick = {this.Uploadfile}>Upload</button>
         </div>
-        <div>
+        <div className="Audio">
           <AudioPlayer 
               audioFiles={playList}
           />
         {this.state.backing && <UploadBacking />}
         </div>
-        {!this.state.backing && <button onClick={() => this.setState({backing: !this.state.backing})}>+</button>}
+        {!this.state.backing && <button className='btn'  onClick={() => this.setState({backing: !this.state.backing})}>Add your music </button>}
+        
       </div>
     );
   }

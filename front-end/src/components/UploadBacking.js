@@ -17,7 +17,7 @@ class UploadBacking extends React.Component {
     data.append('file', this.uploadInput.files[0]);
     
 
-    fetch('http://localhost:8000/upload/backing', {
+    fetch('http://localhost:8000/upload/voice', {
       method: 'POST',
       body: data,
     }).then((response) => {
@@ -41,15 +41,13 @@ class UploadBacking extends React.Component {
     ]
     return (
       <div>
-        <div>
+        <div className='input'>
           <input ref={(ref) => { this.uploadInput = ref; }} type="file" />
-        </div>
-        <div>
-          <button onClick = {this.Uploadfile}>Upload</button>
+          <button className="button" onClick = {this.Uploadfile}>Upload</button>
         </div>
         <div>
           <div>
-            <div>
+            <div className='Audio'>
             <AudioPlayer 
               audioFiles={playList}
             />

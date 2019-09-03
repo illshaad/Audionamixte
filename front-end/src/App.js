@@ -1,6 +1,6 @@
 import React from 'react';
 import Upload from './components/Upload';
-
+import './App.css';
 
 class App extends React.Component {
   render() {
